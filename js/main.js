@@ -8,7 +8,7 @@ var min = Infinity,
     max = -Infinity;
 	
 // parse in the data	
-d3.csv("data/data.csv", function(error, csv) {
+d3.csv("data/height.csv", function(error, csv) {
 	// using an array of arrays with
 	// data[n][2] 
 	// where n = number of columns in the csv file 
@@ -19,53 +19,56 @@ d3.csv("data/data.csv", function(error, csv) {
 	data[0] = [];
 	data[1] = [];
 	data[2] = [];
-	data[3] = [];
 	// add more rows if your csv file has more columns
 
 	// add here the header of the csv file
-	data[0][0] = "Q1";
-	data[1][0] = "Q2";
-	data[2][0] = "Q3";
-	data[3][0] = "Q4";
+	data[0][0] = "Both handed";
+	data[1][0] = "Left handed";
+	data[2][0] = "Right handed";
 	// add more rows if your csv file has more columns
 
 	data[0][1] = [];
 	data[1][1] = [];
 	data[2][1] = [];
-	data[3][1] = [];
   
 	csv.forEach(function(x) {
 
-		var v1 = Math.floor(x.Q1),
-			v2 = Math.floor(x.Q2),
-			v3 = Math.floor(x.Q3),
-			v4 = Math.floor(x.Q4);
+		var v1 = Math.floor(x["Both handed"]),
+			v2 = Math.floor(x["Left handed"]),
+			v3 = Math.floor(x["Right handed"]);
 			// add more variables if your csv file has more columns
-		debugger;	
-		var rowMax = Math.max(v1, Math.max(v2, Math.max(v3,v4)));
-		var rowMin = Math.min(v1, Math.min(v2, Math.min(v3,v4)));
-        
-        if (x.Q1 !== "") {
-        	data[0][1].push(v1);
-        }
-		if (x.Q1 !== "") {
-        	data[1][1].push(v2);
-        }
-        if (x.Q1 !== "") {
-        	data[2][1].push(v3);
-        }
-        if (x.Q1 !== "") {
-        	data[3][1].push(v4);
-        }
 		
+		row_values = [];
+
+		if (x["Both handed"] !== "") {
+        	data[0][1].push(v1);
+        	row_values.push(v1);
+        }
+		if (x["Left handed"] !== "") {
+        	data[1][1].push(v2);
+        	row_values.push(v2);
+        }
+        if (x["Right handed"] !== "") {
+        	data[2][1].push(v3);
+        	row_values.push(v3);
+        }
+
+		var rowMax = Math.max.apply(null, row_values);
+		var rowMin = Math.min.apply(null, row_values);
+        
+        
 		
 		
 		 // add more rows if your csv file has more columns
-		 
+		
+		
 		if (rowMax > max) max = rowMax;
 		if (rowMin < min) min = rowMin;	
 	});
-  
+
+    console.log(min);
+	console.log(max);
+	//debugger;
 	var chart = d3.box()
 		.whiskers(iqr(1.5))
 		.height(height)	
@@ -112,7 +115,7 @@ d3.csv("data/data.csv", function(error, csv) {
         .attr("text-anchor", "middle")  
         .style("font-size", "18px") 
         //.style("text-decoration", "underline")  
-        .text("Revenue 2012");
+        .text("Height of baseball players with different handedness");
  
 	 // draw y axis
 	svg.append("g")
@@ -124,7 +127,7 @@ d3.csv("data/data.csv", function(error, csv) {
 		  .attr("dy", ".71em")
 		  .style("text-anchor", "end")
 		  .style("font-size", "16px") 
-		  .text("Revenue in €");		
+		  .text("Height");		
 	
 	// draw x axis	
 	svg.append("g")
@@ -133,11 +136,11 @@ d3.csv("data/data.csv", function(error, csv) {
       .call(xAxis)
 	  .append("text")             // text label for the x axis
         .attr("x", (width / 2) )
-        .attr("y",  10 )
+        .attr("y",  19 )
 		.attr("dy", ".71em")
         .style("text-anchor", "middle")
 		.style("font-size", "16px") 
-        .text("Quarter"); 
+        .text("Handedness"); 
 });
 
 // Returns a function to compute the interquartile range.
