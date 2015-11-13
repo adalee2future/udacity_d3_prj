@@ -6,9 +6,9 @@ var height = 400 - margin.top - margin.bottom;
 
 //d3.select("body")
 //          .append("h2")
-//          .text("head 2");
+//         .text("head 2");
 
-var buttons = d3.select("body")
+var buttons = d3.select(".col-md-4")
 				.append("div")
 				.attr("class", "buttons")
 				.selectAll("div")
@@ -94,7 +94,7 @@ function plot_csv(filename, title, ylab) {
 		.domain([min, max])
 		.showLabels(labels);
 
-	var svg = d3.select("body").append("svg")
+	var svg = d3.select(".col-md-8").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.attr("class", "box")    
@@ -189,8 +189,14 @@ var ylab = "Height";
 function update(d) {
 	d3.select('svg').remove();
 	var filename = "data/" + d + ".csv"
+	if (d == "HR") {
+		d = "Home Runs";
+	}else if (d == "avg") {
+		d = "Batting Average";
+	}
 	var title = d[0].toUpperCase() + d.slice(1) + " of baseball players with different handedness";
 	var ylab = d[0].toUpperCase() + d.slice(1);
+
 	plot_csv(filename, title, ylab);
     
 }
