@@ -3,12 +3,34 @@ var labels = true; // show the text labels beside individual boxplots?
 var margin = {top: 30, right: 50, bottom: 70, left: 50};
 var  width = 800 - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;
+
+//d3.select("body")
+//          .append("h2")
+//          .text("head 2");
+
+var buttons = d3.select("body")
+				.append("div")
+				.attr("class", "buttons")
+				.selectAll("div")
+				.data(["height", "weight", "avg", "HR"])
+				.enter()
+				.append("div")
+				.attr("class", "button")
+				.text(function(d){return d;});
+buttons.on("click", function(d) {
 	
-var min = Infinity,
-    max = -Infinity;
-	
+	d3.select(this)
+	  .transition()
+	  .duration(500)
+	  .style("background", "lightblue")
+	  .style("color", "white");
+	update(d);
+})
 // parse in the data	
-d3.csv("data/height.csv", function(error, csv) {
+function plot_csv(filename, title, ylab) {
+	var min = Infinity, max = -Infinity;
+
+	d3.csv(filename, function(error, csv) {
 	// using an array of arrays with
 	// data[n][2] 
 	// where n = number of columns in the csv file 
@@ -32,10 +54,10 @@ d3.csv("data/height.csv", function(error, csv) {
 	data[2][1] = [];
   
 	csv.forEach(function(x) {
-
-		var v1 = Math.floor(x["Both handed"]),
-			v2 = Math.floor(x["Left handed"]),
-			v3 = Math.floor(x["Right handed"]);
+        //debugger;
+		var v1 = +x["Both handed"],
+			v2 = +x["Left handed"],
+			v3 = +x["Right handed"];
 			// add more variables if your csv file has more columns
 		
 		row_values = [];
@@ -66,9 +88,6 @@ d3.csv("data/height.csv", function(error, csv) {
 		if (rowMin < min) min = rowMin;	
 	});
 
-    console.log(min);
-	console.log(max);
-	//debugger;
 	var chart = d3.box()
 		.whiskers(iqr(1.5))
 		.height(height)	
@@ -107,27 +126,28 @@ d3.csv("data/height.csv", function(error, csv) {
 		.attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
       .call(chart.width(x.rangeBand())); 
 	
-	      
+	//debugger;    
 	// add a title
 	svg.append("text")
+	    .attr("id", "title")
         .attr("x", (width / 2))             
         .attr("y", 0 + (margin.top / 2))
-        .attr("text-anchor", "middle")  
+        .attr("text-anchor", "middle")
         .style("font-size", "18px") 
-        //.style("text-decoration", "underline")  
-        .text("Height of baseball players with different handedness");
+        .text(title);
  
 	 // draw y axis
 	svg.append("g")
         .attr("class", "y axis")
         .call(yAxis)
 		.append("text") // and text1
+		  .attr("id", "ylab")
 		  .attr("transform", "rotate(-90)")
 		  .attr("y", 6)
 		  .attr("dy", ".71em")
 		  .style("text-anchor", "end")
 		  .style("font-size", "16px") 
-		  .text("Height");		
+		  .text(ylab);		
 	
 	// draw x axis	
 	svg.append("g")
@@ -141,7 +161,10 @@ d3.csv("data/height.csv", function(error, csv) {
         .style("text-anchor", "middle")
 		.style("font-size", "16px") 
         .text("Handedness"); 
+
 });
+}
+
 
 // Returns a function to compute the interquartile range.
 function iqr(k) {
@@ -155,4 +178,19 @@ function iqr(k) {
     while (d[--j] > q3 + iqr);
     return [i, j];
   };
+}
+
+
+var title = "Height of baseball players with different handedness";
+var filename = "data/height.csv";
+var ylab = "Height";
+
+
+function update(d) {
+	d3.select('svg').remove();
+	var filename = "data/" + d + ".csv"
+	var title = d[0].toUpperCase() + d.slice(1) + " of baseball players with different handedness";
+	var ylab = d[0].toUpperCase() + d.slice(1);
+	plot_csv(filename, title, ylab);
+    
 }

@@ -1,6 +1,10 @@
-
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: black;
 }
 
 .box {
@@ -39,4 +43,16 @@ body {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+div.buttons {
+    position: fixed;
+    top: 5px;
+    left: 50px;
+} 
+
+div.buttons div {
+    background-color: rgb(251, 201, 127);
+    padding: 3px;
+    margin: 7px;
 }
