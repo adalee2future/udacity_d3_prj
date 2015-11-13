@@ -1,0 +1,7 @@
+*.Rmd
+*.py
+.Rhistory
+P6.html
+P6_files
+.ipynb_checkpoints
+*.ipynb
