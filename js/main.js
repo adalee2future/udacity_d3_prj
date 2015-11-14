@@ -21,7 +21,7 @@ buttons.on("click", function(d) {
 	
 	d3.select(this)
 	  .transition()
-	  .duration(500)
+	  .duration(50)
 	  .style("background", "lightblue")
 	  .style("color", "white");
 	update(d);

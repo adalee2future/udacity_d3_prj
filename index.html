@@ -13,6 +13,48 @@
 	
 
 	<script src="js/d3.v3.min.js"></script>
-	<script src="js/box.js"></script>
-	<script src="js/main.js"></script>
+<script src="js/box.js"></script>
+<script src="js/main.js"></script>
+	<div class="container-fluid main-container">
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>We investigate a <a href="https://s3.amazonaws.com/udacity-hosted-downloads/ud507/baseball_data.csv">data set</a> containing 1,157 baseball players including their handedness (right or left handed), height, weight, batting average, and home runs. I am concerned about the relationship between handedness with height, weight, bitting average and home runs, so I make boxplot of these variables. You can choose button from left to see different box plots.</p>
+</div>
+<div id="design" class="section level2">
+<h2>Design</h2>
+<p>I use box plot to see relationship of different handedness with other variables, I also add 4 buttons so that readers can investigate relationship between handedness and 4 variables (<code>height</code>, <code>weight</code>, <code>batting average</code> and <code>home runs</code>) separately.</p>
+</div>
+<div id="feedback" class="section level2">
+<h2>Feedback</h2>
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<ul>
+<li><a href="http://bl.ocks.org/jensgrubert/7789216">D3.js Boxplot with Axes and Labels</a><br></li>
+<li><a href="http://getbootstrap.com/css">bootstrap</a></li>
+</ul>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
 </body>
