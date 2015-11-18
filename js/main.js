@@ -8,7 +8,7 @@ var height = 400 - margin.top - margin.bottom;
 //          .append("h2")
 //         .text("head 2");
 
-var buttons = d3.select(".col-md-4")
+var buttons = d3.select(".col-md-2")
 				.append("div")
 				.attr("class", "buttons")
 				.selectAll("div")
@@ -28,6 +28,7 @@ buttons.on("click", function(d) {
 })
 // parse in the data	
 function plot_csv(filename, title, ylab) {
+	debugger;
 	var min = Infinity, max = -Infinity;
 
 	d3.csv(filename, function(error, csv) {
@@ -94,7 +95,7 @@ function plot_csv(filename, title, ylab) {
 		.domain([min, max])
 		.showLabels(labels);
 
-	var svg = d3.select(".col-md-8").append("svg")
+	var svg = d3.select(".col-md-6").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.attr("class", "box")    
@@ -126,7 +127,6 @@ function plot_csv(filename, title, ylab) {
 		.attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
       .call(chart.width(x.rangeBand())); 
 	
-	//debugger;    
 	// add a title
 	svg.append("text")
 	    .attr("id", "title")
@@ -183,7 +183,6 @@ function iqr(k) {
 function update(d) {
 	d3.select('svg').remove();
 	var filename = "data/" + d + ".csv"
-	debugger;
 	if (d == "HR") {
 		d = "Home Runs";
 	}else if (d == "avg") {
@@ -191,16 +190,16 @@ function update(d) {
 	}
 	switch (d) {
 		case "height":
-			title = "Does both-handed baseball players has less height on average?";
+			title = "Does both-handed baseball players have less height on average?";
 			break;
 		case "weight":
-			title = "Does both-handed baseball players has less weight on average?";
+			title = "Does both-handed baseball players have less weight on average?";
 			break;
 		case "Home Runs":
-			title = "Which kind of handedess has best performance in home runs?";
+			title = "Which kind of baseball palyers have best performance in home runs?";
 			break;
 		case "Batting Average":
-			title = "Which kind of handedess has best performance in batting average?";
+			title = "Which kind of players have best performance in batting average?";
 			break;
 	}
 	var ylab = d[0].toUpperCase() + d.slice(1);
@@ -208,3 +207,6 @@ function update(d) {
 	plot_csv(filename, title, ylab);
     
 }
+
+// initially show boxplot of height
+update("height")
