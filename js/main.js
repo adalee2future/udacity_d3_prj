@@ -61,7 +61,7 @@ function plot_csv(filename, title, ylab) {
 			// add more variables if your csv file has more columns
 		
 		row_values = [];
-
+        debugger;
 		if (x["Both handed"] !== "") {
         	data[0][1].push(v1);
         	row_values.push(v1);
@@ -180,21 +180,29 @@ function iqr(k) {
   };
 }
 
-
-var title = "Height of baseball players with different handedness";
-var filename = "data/height.csv";
-var ylab = "Height";
-
-
 function update(d) {
 	d3.select('svg').remove();
 	var filename = "data/" + d + ".csv"
+	debugger;
 	if (d == "HR") {
 		d = "Home Runs";
 	}else if (d == "avg") {
 		d = "Batting Average";
 	}
-	var title = d[0].toUpperCase() + d.slice(1) + " of baseball players with different handedness";
+	switch (d) {
+		case "height":
+			title = "Does both-handed baseball players has less height on average?";
+			break;
+		case "weight":
+			title = "Does both-handed baseball players has less weight on average?";
+			break;
+		case "Home Runs":
+			title = "Which kind of handedess has best performance in home runs?";
+			break;
+		case "Batting Average":
+			title = "Which kind of handedess has best performance in batting average?";
+			break;
+	}
 	var ylab = d[0].toUpperCase() + d.slice(1);
 
 	plot_csv(filename, title, ylab);
