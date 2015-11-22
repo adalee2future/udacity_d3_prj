@@ -14,8 +14,8 @@ To me, it seems the most interesting finding is that left handed players seem to
 To really make this visualization explanatory instead of exploratory, the story about left handed players being better players needs to be highlighted and at the forefront. The message needs to be clear to the reader that the purpose of the visualization is to show that left handed players tend to perform better. That probably means opening the visualization with the average home runs and battings score visualizations rather than height and weight. The summary and chart titles should mention the story about left handed players being better.
 
 ### Improvement 1:
-* Change title for different boxplot
-* 
+* Change title for different boxplot to make it more expressively
+* Initially show first boxplot (used to not show any boxplot before clicking any button)
 
 
 ### Person 2:
@@ -26,6 +26,9 @@ Questions, as a visual tool, box plots are a good way to summarize information. 
 Over all it is an interesting approach, and easy to interpret.
 
 p.s. when you click on each of the buttons, you should change their colors (as a guide to the viewer of which section they are at).
+
+### Improvement 2:
+* Make only one button highlighted each time (used to highlighted all buttons that were clicked)
 
 ## Person 3:
 Not bad.
