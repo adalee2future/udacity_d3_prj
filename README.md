@@ -16,7 +16,7 @@ To really make this visualization explanatory instead of exploratory, the story 
 ### Improvement 1:
 * Change title for different boxplot to make it more expressively
 * Initially show first boxplot (used to not show any boxplot before clicking any button)
-
+* Move description text left
 
 ### Person 2:
 What do I notice? Left handed batters appear to, typically, have better stats for both batting average and HR. Which is interesting. Switch hitters are both shorter and lighter, on average, than either left of right handed players.
