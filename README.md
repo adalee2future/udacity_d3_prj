@@ -9,7 +9,14 @@ Since I am concerned about the relationship between handedness with height, weig
 ## Feedback
 
 ### Person 1:
-To me, it seems the most interesting finding is that left handed players seem to have higher averages and higher home run values. I'm not sure that the height and weight charts tell me anything specific. The difference in the both handed players vs the other handed players could just be due to the both handed players having a small sample size.
+To me, it seems the most interesting finding is that left handed players seem to have higher averages and higher home run values. I'm not sure that the height and weight charts tell me anything specific. The difference in the both handed players vs the other handed players could just be due to the both handed players having a small sample size. 
+
+To really make this visualization explanatory instead of exploratory, the story about left handed players being better players needs to be highlighted and at the forefront. The message needs to be clear to the reader that the purpose of the visualization is to show that left handed players tend to perform better. That probably means opening the visualization with the average home runs and battings score visualizations rather than height and weight. The summary and chart titles should mention the story about left handed players being better.
+
+### Improvement 1:
+* Change title for different boxplot
+* 
+
 
 ### Person 2:
 What do I notice? Left handed batters appear to, typically, have better stats for both batting average and HR. Which is interesting. Switch hitters are both shorter and lighter, on average, than either left of right handed players.
@@ -21,9 +28,7 @@ Over all it is an interesting approach, and easy to interpret.
 p.s. when you click on each of the buttons, you should change their colors (as a guide to the viewer of which section they are at).
 
 ## Person 3:
-Good
+Not bad.
 
 ## Resources
 * [D3.js Boxplot with Axes and Labels](http://bl.ocks.org/jensgrubert/7789216)  
-
-## Versions
