@@ -34,4 +34,9 @@ p.s. when you click on each of the buttons, you should change their colors (as a
 Not bad.
 
 ## Resources
-* [D3.js Boxplot with Axes and Labels](http://bl.ocks.org/jensgrubert/7789216)  
+* [D3.js Boxplot with Axes and Labels](http://bl.ocks.org/jensgrubert/7789216) 
+
+## Versions
+Initial version (git checkout 3dce7c)
+Improvement 1 (git checkout 9eff26)
+Improvemnet 2 (last commit) 
