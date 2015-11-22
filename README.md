@@ -39,4 +39,4 @@ Not bad.
 ## Versions
 * Initial version (git checkout 3dce7c)  
 * Improvement 1 (git checkout 9eff26)  
-* Improvemnet 2 (last commit)
+* Improvemnet 2 (git checkout gh-pages)
