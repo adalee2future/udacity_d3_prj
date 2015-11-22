@@ -4,10 +4,6 @@ var margin = {top: 30, right: 50, bottom: 70, left: 50};
 var  width = 800 - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;
 
-//d3.select("body")
-//          .append("h2")
-//         .text("head 2");
-
 var buttons = d3.select(".col-md-2")
 				.append("div")
 				.attr("class", "buttons")
@@ -18,17 +14,19 @@ var buttons = d3.select(".col-md-2")
 				.attr("class", "button")
 				.text(function(d){return d;});
 buttons.on("click", function(d) {
-	
+	// set all buttons to initial look
+    d3.selectAll(".button").style("background", "rgb(251, 201, 127)").style("color", "black");
+    // set button that was click different look
 	d3.select(this)
 	  .transition()
 	  .duration(50)
 	  .style("background", "lightblue")
 	  .style("color", "white");
+	// update
 	update(d);
 })
 // parse in the data	
 function plot_csv(filename, title, ylab) {
-	debugger;
 	var min = Infinity, max = -Infinity;
 
 	d3.csv(filename, function(error, csv) {
@@ -55,14 +53,12 @@ function plot_csv(filename, title, ylab) {
 	data[2][1] = [];
   
 	csv.forEach(function(x) {
-        //debugger;
 		var v1 = +x["Both handed"],
 			v2 = +x["Left handed"],
 			v3 = +x["Right handed"];
 			// add more variables if your csv file has more columns
 		
 		row_values = [];
-        debugger;
 		if (x["Both handed"] !== "") {
         	data[0][1].push(v1);
         	row_values.push(v1);
@@ -209,4 +205,5 @@ function update(d) {
 }
 
 // initially show boxplot of height
-update("height")
+d3.select(".button").style("background", "lightblue").style("color", "white");
+update("height");
