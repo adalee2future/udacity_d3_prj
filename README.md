@@ -49,7 +49,6 @@ Buttons are overlapping with y-axis. Consider moving them a little bit or move a
 
 ## Resources
 * [D3.js Boxplot with Axes and Labels](http://bl.ocks.org/jensgrubert/7789216) 
-* [d3js : How to select nth element of a group](http://stackoverflow.com/questions/29278107/d3js-how-to-select-nth-element-of-a-group)
 
 ## Versions
 * Initial version (git checkout 3dce7c)  
