@@ -12,18 +12,12 @@ d3.box = function() {
 	  showLabels = true, // whether or not to show text labels
 	  numBars = 4,
 	  curBar = 1,
-      tickFormat = null;
+    tickFormat = null;
 
   // For each small multiple…
   function box(g) {
-    g.each(function(data, i) {
-      //d = d.map(value).sort(d3.ascending);
-	  //var boxIndex = data[0];
-	  //var boxIndex = 1;
-	  var d = data[1].sort(d3.ascending);
-	  
-	 // console.log(boxIndex); 
-	  //console.log(d); 
+      g.each(function(data, i) {
+  	  var d = data[1].sort(d3.ascending);
 	  
       var g = d3.select(this),
           n = d.length,
@@ -96,7 +90,6 @@ d3.box = function() {
       // Update innerquartile box.
       var box = g.selectAll("rect.box")
           .data([quartileData]);
-
       box.enter().append("rect")
           .attr("class", "box")
           .attr("x", 0)

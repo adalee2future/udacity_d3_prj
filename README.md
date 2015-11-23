@@ -30,13 +30,29 @@ p.s. when you click on each of the buttons, you should change their colors (as a
 ### Improvement 2:
 * Make only one button highlighted each time (used to highlighted all buttons that were clicked)
 
-## Person 3:
-Not bad.
+### Person 3:
+Very nice visualization! I like how boxplots show difference between different handed players. However, there is still room for improvement. As suggested by previous review (and also mentioned in Person 2) main story here is difference in home runs and batting averages between left, right and both handed players. It is nice that new version actually shows some chart from the beginning, but it still shows not the most important one. Consider making chart with home runs default one.
+
+Additional suggestions:
+
+Maybe it will be better to cut off some outliers on HR chart. Currently median value is dwarfed by extreme outliers and it is hard to see difference in values if you don't look at numbers. Great visualization should be sufficient itself, not rely only on labels. Now, if you strip numbers it will be very hard to say which handed players have higher median home runs.
+Consider highlighting bar you want to draw attention to (I mean left handed players). Use bright color for this bar and more light for other.
+Maybe you should make button captions more clear: currently it is confusing what avg or HR means at the first glance.
+Buttons are overlapping with y-axis. Consider moving them a little bit or move axis to other side of plot.
+
+### Improvement 3
+* Making chart with home runs default one
+* Cut off some outliers on HR chart
+* Make button captions more clear
+* Make transition time from 50 to 200
+
 
 ## Resources
 * [D3.js Boxplot with Axes and Labels](http://bl.ocks.org/jensgrubert/7789216) 
+* [d3js : How to select nth element of a group](http://stackoverflow.com/questions/29278107/d3js-how-to-select-nth-element-of-a-group)
 
 ## Versions
 * Initial version (git checkout 3dce7c)  
 * Improvement 1 (git checkout 9eff26)  
-* Improvemnet 2 (git checkout gh-pages)
+* Improvemnet 2 (git checkout 6f739e)
+* Improvement 3 (git checkout gh-pages)
